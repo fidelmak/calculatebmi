@@ -1,4 +1,8 @@
+import 'package:calculatebmi/reusable_card.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'icon_content.dart';
 
 const bottomContainerHeight = 80.0;
 const colorCode = Color(0xFF1D1E33);
@@ -23,17 +27,42 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                     child: ReusableCard(
+                  cardChild: iconContent(
+                    icon: FontAwesomeIcons.mars,
+                    label: "MALE",
+                  ),
                   colour: colorCode,
                 )),
-                Expanded(child: ReusableCard(colour: colorCode))
+                Expanded(
+                    child: ReusableCard(
+                        cardChild: iconContent(
+                          icon: FontAwesomeIcons.venus,
+                          label: "FEMALE",
+                        ),
+                        colour: colorCode))
               ],
             )),
-            Expanded(child: ReusableCard(colour: colorCode)),
+            Expanded(
+                child: ReusableCard(
+                    cardChild: Column(
+                      children: [],
+                    ),
+                    colour: colorCode)),
             Expanded(
                 child: Row(
               children: <Widget>[
-                Expanded(child: ReusableCard(colour: Colors.blue)),
-                Expanded(child: ReusableCard(colour: colorCode))
+                Expanded(
+                    child: ReusableCard(
+                        cardChild: Column(
+                          children: [],
+                        ),
+                        colour: Colors.blue)),
+                Expanded(
+                    child: ReusableCard(
+                        cardChild: Column(
+                          children: [],
+                        ),
+                        colour: colorCode))
               ],
             )),
             Container(
@@ -44,22 +73,5 @@ class _InputPageState extends State<InputPage> {
             )
           ],
         ));
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  final Color colour;
-
-  ReusableCard({required this.colour});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: colour,
-      ),
-    );
   }
 }
