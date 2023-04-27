@@ -34,12 +34,17 @@ class _InputPageState extends State<InputPage> {
                   colour: colorCode,
                 )),
                 Expanded(
-                    child: ReusableCard(
-                        cardChild: iconContent(
-                          icon: FontAwesomeIcons.venus,
-                          label: "FEMALE",
-                        ),
-                        colour: colorCode))
+                    child: GestureDetector(
+                  onTap: () {
+                    print("PRINT MALE CARD WAS PRESSED");
+                  },
+                  child: ReusableCard(
+                      cardChild: iconContent(
+                        icon: FontAwesomeIcons.venus,
+                        label: "FEMALE",
+                      ),
+                      colour: colorCode),
+                ))
               ],
             )),
             Expanded(
