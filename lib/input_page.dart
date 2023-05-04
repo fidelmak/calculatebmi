@@ -43,7 +43,7 @@ class _InputPageState extends State<InputPage> {
   //   }
   // }
 
-  late Gender selectedGender;
+  Gender? selectedGender;
 
   @override
   Widget build(BuildContext context) {
