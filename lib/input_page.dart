@@ -57,37 +57,33 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
               children: <Widget>[
                 Expanded(
-                    child: GestureDetector(
-                  onTap: () {
+                    child: ReusableCard(
+                  onPress: () {
                     setState(() {
                       selectedGender = Gender.male;
                     });
                   },
-                  child: ReusableCard(
-                    colour: selectedGender == Gender.male
-                        ? activeCardColor
-                        : inactiveColor,
-                    cardChild: iconContent(
-                      icon: FontAwesomeIcons.mars,
-                      label: "MALE",
-                    ),
+                  colour: selectedGender == Gender.male
+                      ? activeCardColor
+                      : inactiveColor,
+                  cardChild: iconContent(
+                    icon: FontAwesomeIcons.mars,
+                    label: "MALE",
                   ),
                 )),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.female;
                       });
                     },
-                    child: ReusableCard(
-                      colour: selectedGender == Gender.female
-                          ? activeCardColor
-                          : inactiveColor,
-                      cardChild: iconContent(
-                        icon: FontAwesomeIcons.venus,
-                        label: "FEMALE",
-                      ),
+                    colour: selectedGender == Gender.female
+                        ? activeCardColor
+                        : inactiveColor,
+                    cardChild: iconContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: "FEMALE",
                     ),
                   ),
                 )
@@ -95,6 +91,7 @@ class _InputPageState extends State<InputPage> {
             )),
             Expanded(
                 child: ReusableCard(
+                    onPress: () {},
                     cardChild: Column(
                       children: [Text("data")],
                     ),
@@ -104,12 +101,14 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                     child: ReusableCard(
+                        onPress: () {},
                         cardChild: Column(
                           children: [],
                         ),
                         colour: Colors.blue)),
                 Expanded(
                     child: ReusableCard(
+                        onPress: () {},
                         cardChild: Column(
                           children: [],
                         ),
