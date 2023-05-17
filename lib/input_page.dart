@@ -42,8 +42,16 @@ class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
   int weight = 60;
-  int add() {
-    return weight++;
+  void add() {
+    setState(() {
+      weight++;
+    });
+  }
+
+  void minus() {
+    setState(() {
+      weight--;
+    });
   }
 
   @override
@@ -162,16 +170,17 @@ class _InputPageState extends State<InputPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           RoundIconButton(
-                              icon: FontAwesomeIcons.minus, onPressed: add),
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                minus();
+                              }),
                           SizedBox(
                             width: 10.0,
                           ),
                           RoundIconButton(
                             icon: FontAwesomeIcons.add,
                             onPressed: () {
-                              setState(() {
-                                add();
-                              });
+                              add();
                             },
                           ),
                         ],
