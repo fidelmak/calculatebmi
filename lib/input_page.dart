@@ -42,6 +42,7 @@ class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
   int weight = 60;
+  int age = 19;
   void add() {
     setState(() {
       weight++;
@@ -159,7 +160,7 @@ class _InputPageState extends State<InputPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "weight",
+                        "WEIGHT",
                         style: kLabelTextStyle,
                       ),
                       Text(
@@ -194,15 +195,62 @@ class _InputPageState extends State<InputPage> {
                   ),
                 )),
                 Expanded(
-                    child: ReusableCard(
-                        onPress: () {},
-                        cardChild: Column(
-                          children: [],
-                        ),
-                        colour: kInactiveColor))
+                    child: Row(
+                  children: [
+                    Expanded(
+                      child: ReusableCard(
+                          onPress: () {},
+                          cardChild: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                "AGE",
+                                style: kLabelTextStyle,
+                              ),
+                              Text(
+                                age.toString(),
+                                style: kNumberTextStyle,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  RoundIconButton(
+                                    icon: FontAwesomeIcons.minus,
+                                    onPressed: () {
+                                      setState(() {
+                                        age -= 1;
+                                      });
+                                    },
+                                  ),
+                                  SizedBox(width: 10.0),
+                                  RoundIconButton(
+                                    icon: FontAwesomeIcons.add,
+                                    onPressed: () {
+                                      setState(() {
+                                        age += 1;
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          colour: kInactiveColor),
+                    ),
+                  ],
+                ))
               ],
             )),
             Container(
+              child: Center(
+                child: Text(
+                  "Calculate BMI",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
               color: kBottomContainerColor,
               margin: EdgeInsets.only(top: 10),
               width: double.infinity,
