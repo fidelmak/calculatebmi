@@ -243,7 +243,7 @@ class _InputPageState extends State<InputPage> {
             )),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/calResult');
+                Navigator.pushNamed(context, '/result');
               },
               child: Container(
                 child: Center(

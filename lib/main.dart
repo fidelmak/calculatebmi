@@ -19,7 +19,7 @@ class BMICalculator extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xff0A0E21),
         hintColor: Colors.pink,
       ),
-      home: InputPage(),
+      initialRoute: "/",
       routes: navigate,
     );
   }
@@ -27,5 +27,5 @@ class BMICalculator extends StatelessWidget {
 
 Map<String, WidgetBuilder> navigate = {
   "/": (BuildContext context) => InputPage(),
-  "result": (BuildContext context) => calResult(),
+  "/result": (BuildContext context) => calResult(),
 };
