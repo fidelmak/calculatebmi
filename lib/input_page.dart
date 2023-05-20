@@ -241,20 +241,25 @@ class _InputPageState extends State<InputPage> {
                 ))
               ],
             )),
-            Container(
-              child: Center(
-                child: Text(
-                  "Calculate BMI",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/calResult');
+              },
+              child: Container(
+                child: Center(
+                  child: Text(
+                    "Calculate BMI",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
+                color: kBottomContainerColor,
+                margin: EdgeInsets.only(top: 10),
+                width: double.infinity,
+                height: kBottomContainerHeight,
               ),
-              color: kBottomContainerColor,
-              margin: EdgeInsets.only(top: 10),
-              width: double.infinity,
-              height: kBottomContainerHeight,
             )
           ],
         ));

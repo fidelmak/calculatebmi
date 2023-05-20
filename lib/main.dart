@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'calculate_result.dart';
+import 'input_page.dart';
 
 import 'input_page.dart';
 
@@ -18,6 +20,12 @@ class BMICalculator extends StatelessWidget {
         hintColor: Colors.pink,
       ),
       home: InputPage(),
+      routes: navigate,
     );
   }
 }
+
+Map<String, WidgetBuilder> navigate = {
+  "/": (BuildContext context) => InputPage(),
+  "result": (BuildContext context) => calResult(),
+};
