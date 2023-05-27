@@ -1,8 +1,8 @@
+import 'package:calculatebmi/screens/input_page.dart';
 import 'package:flutter/material.dart';
-import 'calculate_result.dart';
-import 'input_page.dart';
-
-import 'input_page.dart';
+import 'screens/calculate_result.dart';
+import 'screens/input_page.dart';
+import 'model/calculatorBrain.dart';
 
 void main() => runApp(BMICalculator());
 
@@ -25,7 +25,12 @@ class BMICalculator extends StatelessWidget {
   }
 }
 
+//bmiBrain cal = bmiBrain(height: height, weight: weight);
 Map<String, WidgetBuilder> navigate = {
   "/": (BuildContext context) => InputPage(),
-  "/result": (BuildContext context) => calResult(),
+  // "/result": (BuildContext context) => calResult(
+  //       bmiResult: cal.calculateBmi(),
+  //       interpretation: cal.getInterpretations(),
+  //       resultText: cal.getResult(),
+  //     ),
 };

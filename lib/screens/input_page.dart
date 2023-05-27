@@ -1,9 +1,13 @@
-import 'package:calculatebmi/reusable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../components/reusable_card.dart';
+import '../model/calculatorBrain.dart';
+import '../constants/constants.dart';
+import 'calculate_result.dart';
+import '../model/calculatorBrain.dart';
 
-import 'icon_content.dart';
-import 'constants/constants.dart';
+import '/components/icon_content.dart';
+import '../constants/constants.dart';
 
 enum Gender { male, female }
 
@@ -13,32 +17,6 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  // Color MaleCardColor = inactiveColor;
-  // Color FemaleCardColor = inactiveColor;
-  // void updateColor(Gender SelectedGender) {
-  //   MaleCardColor == inactiveColor ? activeCardColor : inactiveColor;
-
-  //   if (SelectedGender == Gender.male) {
-  //     if (MaleCardColor == inactiveColor) {
-  //       MaleCardColor = activeCardColor;
-  //       FemaleCardColor = inactiveColor;
-  //     } else {
-  //       MaleCardColor = inactiveColor;
-  //       FemaleCardColor = activeCardColor;
-  //     }
-  //   }
-
-  //   if (SelectedGender == Gender.female) {
-  //     if (FemaleCardColor == inactiveColor) {
-  //       FemaleCardColor = activeCardColor;
-  //       MaleCardColor = inactiveColor;
-  //     } else {
-  //       FemaleCardColor = inactiveColor;
-  //       MaleCardColor = activeCardColor;
-  //     }
-  //   }
-  // }
-
   Gender? selectedGender;
   int height = 180;
   int weight = 60;
@@ -49,6 +27,8 @@ class _InputPageState extends State<InputPage> {
     });
   }
 
+  int get h => height;
+  int get w => weight;
   void minus() {
     setState(() {
       weight--;
@@ -174,7 +154,9 @@ class _InputPageState extends State<InputPage> {
                             icon: FontAwesomeIcons.minus,
                             onPressed: () {
                               setState(() {
-                                weight -= 1;
+                                if (weight >= 1) {
+                                  weight -= 1;
+                                }
                               });
                             },
                           ),
@@ -185,7 +167,9 @@ class _InputPageState extends State<InputPage> {
                             icon: FontAwesomeIcons.add,
                             onPressed: () {
                               setState(() {
-                                weight += 1;
+                                if (weight >= 0) {
+                                  weight += 1;
+                                }
                               });
                             },
                           ),
@@ -218,7 +202,9 @@ class _InputPageState extends State<InputPage> {
                                     icon: FontAwesomeIcons.minus,
                                     onPressed: () {
                                       setState(() {
-                                        age -= 1;
+                                        if (age >= 1) {
+                                          age -= 1;
+                                        }
                                       });
                                     },
                                   ),
@@ -241,28 +227,47 @@ class _InputPageState extends State<InputPage> {
                 ))
               ],
             )),
-            GestureDetector(
+            BottomButton(
+              buttomTitle: "CALCULATE BMI",
               onTap: () {
-                Navigator.pushNamed(context, '/result');
+                bmiBrain cal = bmiBrain(height: height, weight: weight);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => calResult(
+                        bmiResult: cal.calculateBmi(),
+                        interpretation: cal.getInterpretations(),
+                        resultText: cal.getResult(),
+                      ),
+                    ));
               },
-              child: Container(
-                child: Center(
-                  child: Text(
-                    "Calculate BMI",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                color: kBottomContainerColor,
-                margin: EdgeInsets.only(top: 10),
-                width: double.infinity,
-                height: kBottomContainerHeight,
-              ),
             )
           ],
         ));
+  }
+}
+
+class BottomButton extends StatelessWidget {
+  BottomButton({required this.onTap, required this.buttomTitle});
+  final VoidCallback onTap;
+  final String buttomTitle;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        child: Center(
+          child: Text(
+            buttomTitle,
+            style: kLargeButtonTextStyle,
+          ),
+        ),
+        color: kBottomContainerColor,
+        margin: EdgeInsets.only(top: 10),
+        width: double.infinity,
+        height: kBottomContainerHeight,
+      ),
+    );
   }
 }
 
