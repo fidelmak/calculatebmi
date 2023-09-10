@@ -6,6 +6,10 @@ Being underweight or overweight may be an indicator of various underlying health
 The BMI calculator can come in handy to help people aim for fitness targets.
 # inspiration
 this app was built based on Angela yu project. with good emulation of her design 
+
+# interact live 
+https://appetize.io/app/36yjwiycrrinlw54c573f6soje?device=pixel4&osVersion=11.0&scale=75
+
 # screenshots
 
 ![Screenshot_20230610-172055_1](https://github.com/fidelmak/calculatebmi/assets/64453973/192fe714-f4a1-4b47-84fe-431318b0c7f0)
